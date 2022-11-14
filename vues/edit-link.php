@@ -1,3 +1,6 @@
+<?php require_once '../functions.php';
+  get_link_by_id($_GET['id']);
+  $id_to_modify = $_GET['id']; ?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -42,7 +45,7 @@
       <div class="container h-100">
         <div class="row justify-content-center h-50">
           <div class="col-md-6 shadow p-3 pt-5">
-            <h2 class="mb-3">Éditer le lien <?= $_GET['id'] ?></h2>
+            <h2 class="mb-3">Éditer le lien <?= get_link_by_id($_GET['id'])[0]['link_id'] ?></h2>
             <div class="mb-3">
               <form action="../controllers/modify_link_controller.php" method="post">
                 <div class="mb-3">
@@ -54,7 +57,7 @@
                       name="title"
                       placeholder="Stack overflow"
                     />
-                    <label for="title">Titre</label>
+                    <label for="title"><?= get_link_by_id($_GET['id'])[0]['title'] ?></label>
                   </div>
                 </div>
                 <div class="mb-3">
@@ -66,7 +69,7 @@
                       name="url"
                       placeholder="https://stackoverflow.com"
                     />
-                    <label for="url">Lien</label>
+                    <label for="url"><?= get_link_by_id($_GET['id'])[0]['url'] ?></label>
                   </div>
                 </div>
                 <div class="col-md-auto d-flex">
