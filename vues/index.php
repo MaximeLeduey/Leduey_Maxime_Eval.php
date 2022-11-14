@@ -1,3 +1,5 @@
+<?php require_once '../functions.php' ?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -43,7 +45,7 @@
         <div class="row justify-content-center">
           <div class="col-md-6">
             <div class="mb-3">
-              <form action="" method="post">
+              <form action="../controllers/add_link_controller.php" method="post">
                 <div class="row g-2">
                   <div class="col-md">
                     <div class="form-floating">
@@ -76,53 +78,17 @@
               </form>
             </div>
             <ul class="list-group">
-              <li
-                class="list-group-item d-flex justify-content-between align-items-center"
-              >
-                <a href="https://developer.mozilla.org/fr"> MDN Web docs</a>
-                <span>
-                  <i class="fa-regular fa-pen-to-square me-1 text-warning"></i>
-                  <i class="fa-solid fa-trash ms-1 text-danger"></i>
-                </span>
-              </li>
-              <li
-                class="list-group-item d-flex justify-content-between align-items-center"
-              >
-                <a href="https://css-tricks.com">CSS tricks</a>
-                <span>
-                  <i class="fa-regular fa-pen-to-square me-1 text-warning"></i>
-                  <i class="fa-solid fa-trash ms-1 text-danger"></i>
-                </span>
-              </li>
-              <li
-                class="list-group-item d-flex justify-content-between align-items-center"
-              >
-                <a href="https://www.awwwards.com">AWWARDS</a>
-                <span>
-                  <i class="fa-regular fa-pen-to-square me-1 text-warning"></i>
-                  <i class="fa-solid fa-trash ms-1 text-danger"></i>
-                </span>
-              </li>
-              <li
-                class="list-group-item d-flex justify-content-between align-items-center"
-              >
-                <a href="https://eilgin.github.io/php-the-right-way"
-                  >PHP the right way</a
+              <?php foreach(get_all_link() as $link): ?>
+                  <li
+                  class="list-group-item d-flex justify-content-between align-items-center"
                 >
-                <span>
-                  <i class="fa-regular fa-pen-to-square me-1 text-warning"></i>
-                  <i class="fa-solid fa-trash ms-1 text-danger"></i>
-                </span>
-              </li>
-              <li
-                class="list-group-item d-flex justify-content-between align-items-center"
-              >
-                <a href="https://beta.reactjs.org">React.JS New doc</a>
-                <span>
-                  <i class="fa-regular fa-pen-to-square me-1 text-warning"></i>
-                  <i class="fa-solid fa-trash ms-1 text-danger"></i>
-                </span>
-              </li>
+                  <a href=<?= $link['url'] ?>><?= $link['title'] ?></a>
+                  <span>
+                    <a href="./edit-link.php"><i class="fa-regular fa-pen-to-square me-1 text-warning"></i></a>
+                    <i class="fa-solid fa-trash ms-1 text-danger"></i>
+                  </span>
+                </li>
+              <?php endforeach; ?>
             </ul>
           </div>
         </div>

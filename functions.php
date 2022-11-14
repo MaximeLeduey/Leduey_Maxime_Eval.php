@@ -39,7 +39,14 @@ function db_connect(): PDO
 function get_all_link()
 {
     // TODO implement function
+    $db = db_connect();
+    $sql = "SELECT * FROM `links`";
+    $links = $db->query($sql);
+    $links = $links->fetchAll(PDO::FETCH_ASSOC);
+    return $links;
 }
+
+
 
 
 /**
@@ -50,6 +57,11 @@ function get_all_link()
 function get_link_by_id($link_id)
 {
     // TODO implement function
+    $db = db_connect();
+    $sql = "SELECT * FROM `links` WHERE link_id = $link_id";
+    $link = $db->query($sql);
+    $link = $link->fetchAll(PDO::FETCH_ASSOC);
+    return $link;
 }
 
 
@@ -61,6 +73,12 @@ function get_link_by_id($link_id)
 function update_link($data)
 {
     // TODO implement function
+    $db = db_connect();
+    $title = $data['title'];
+    $url = $data['url'];
+    $id = $data['link_id'];
+    $sql = "UPDATE `links` SET title = '$title', url = '$url' WHERE link_id=$id";
+    $db->exec($sql);
 }
 
 
@@ -72,6 +90,12 @@ function update_link($data)
 function create_link($data)
 {
     // TODO implement function
+    $db = db_connect();
+    $title = $_POST['title'];
+    $url = $_POST['url'];
+    $sql = "INSERT INTO links (title, url)
+    VALUES ('$title', '$url')";
+    $db->exec($sql);
 }
 
 /**
@@ -82,4 +106,7 @@ function create_link($data)
 function delete_link($link_id)
 {
     // TODO implement function
+    $db = db_connect();
+    $sql = "DELETE FROM `links` WHERE link_id = $link_id";
+    $db->exec($sql);
 }
