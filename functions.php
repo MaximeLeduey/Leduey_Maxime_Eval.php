@@ -91,8 +91,8 @@ function create_link($data)
 {
     // TODO implement function
     $db = db_connect();
-    $title = $_POST['title'];
-    $url = $_POST['url'];
+    $title = $data['title'];
+    $url = $data['url'];
     $sql = "INSERT INTO links (title, url)
     VALUES ('$title', '$url')";
     $db->exec($sql);

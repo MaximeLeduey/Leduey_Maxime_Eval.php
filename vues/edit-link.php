@@ -42,9 +42,9 @@
       <div class="container h-100">
         <div class="row justify-content-center h-50">
           <div class="col-md-6 shadow p-3 pt-5">
-            <h2 class="mb-3">Éditer le lien # 1</h2>
+            <h2 class="mb-3">Éditer le lien <?= $_GET['id'] ?></h2>
             <div class="mb-3">
-              <form action="" method="post">
+              <form action="../controllers/modify_link_controller.php" method="post">
                 <div class="mb-3">
                   <div class="form-floating">
                     <input
